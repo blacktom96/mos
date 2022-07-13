@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link href='../lib/main.css' rel='stylesheet' />
+<link href='../css/header.css' rel='stylesheet' />
+<link href='../css/bootstrap.min.css' rel='stylesheet' />
+<script src='../lib/main.js'></script>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialDate: '2022-06-12',
+      initialView: 'timeGridWeek',
+      nowIndicator: true,
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      },
+      navLinks: true, // can click day/week names to navigate views
+      editable: true,
+      selectable: true,
+      selectMirror: true,
+      locale: "JP",
+      dayMaxEvents: true, // allow "more" link when too many events
+      events: [
+        {
+          title: 'All Day Event',
+          start: '2022-06-01',
+        },
+        {
+          title: 'Long Event',
+          start: '2022-06-07',
+          end: '2022-06-10'
+        },
+        {
+          groupId: 999,
+          title: 'Repeating Event',
+          start: '2022-06-09T16:00:00'
+        },
+        {
+          groupId: 999,
+          title: 'Repeating Event',
+          start: '2022-06-16T16:00:00'
+        },
+        {
+          title: 'Conference',
+          start: '2022-06-11',
+          end: '2022-06-13'
+        },
+        {
+          title: 'Meeting',
+          start: '2022-06-12T10:30:00',
+          end: '2022-06-12T12:30:00'
+        },
+        {
+          title: 'Lunch',
+          start: '2022-06-12T12:00:00'
+        },
+        {
+          title: 'Meeting',
+          start: '2022-06-12T14:30:00'
+        },
+        {
+          title: 'Happy Hour',
+          start: '2022-06-12T17:30:00'
+        },
+        {
+          title: 'Dinner',
+          start: '2022-06-12T20:00:00'
+        },
+        {
+          title: 'Birthday Party',
+          start: '2022-06-13T07:00:00'
+        },
+        {
+          title: 'Click for Google',
+          url: 'http://google.com/',
+          start: '2022-06-28'
+        }
+      ]
+    });
+
+    calendar.render();
+  });
+
+</script>
+<style>
+
+  body {
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+
+  #calendar {
+    max-width: 1100px;
+    margin: 21px auto;
+  }
+
+</style>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Pysix<span class="text-primary">Technologies.</span></a>
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+            <div class="navbar-collapse collapse" id="navbarContent">
+
+                <ul class="navbar-nav ml-lg-4 pt-3 pt-lg-0">
+                    <li class="nav-item">
+                        <form method="POST" action="/" name="form1">
+                            <input type="hidden" name="schedule" value="">
+                            <a href="#" onclick="document.form1.submit()" id="schedule" class="nav-link">スケジュール</a>
+
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <form method="POST" action="/screen" name="form2">
+                            <input type="hidden" name="schedulePro" value="">
+                            <a href="#" onclick="document.form2.submit()" id="schedulePro" class="nav-link">コマンド</a>
+
+                        </form>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <form method="POST" action="/screen" name="form3">
+                            <input type="hidden" name="projectInfo" value="">
+                            <a href="#" onclick="document.form3.submit()" id="projectInfo" class="nav-link">担当者情報</a>
+
+                        </form>
+                    </li> -->
+
+                </ul>
+
+                <div class="ml-auto">
+                    <a href="#" class="btn btn-outline rounded-pill">ユーザ名</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+  <div id='calendar'></div>
+
+</body>
+</html>
